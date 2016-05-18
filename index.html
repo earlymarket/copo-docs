@@ -960,13 +960,17 @@ Remember your API key!
 <p>Gets a list of accepted/pending approvals belonging to a user. Returns the approval_id which is used in approved/rejecting an approval.</p>
 <pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users/USER_ID/approvals/"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
+  -H <span class="s2">"X-User-Token: USER_AUTH_TOKEN"</span>
+  -H <span class="s2">"X-User-Email: USER_EMAIL"</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/approvals/'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
-   <span class="p">{</span> <span class="s1">'X-Api-Key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
+   <span class="p">{</span> <span class="s1">'X-Api-Key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span>
+     <span class="s1">'X-User-Token'</span><span class="p">:</span> <span class="s1">'USER_AUTH_TOKEN'</span><span class="p">,</span>
+     <span class="s1">'X-User-Email'</span><span class="p">:</span> <span class="s1">'USER_EMAIL'</span> <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
 
 <span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
@@ -1011,6 +1015,8 @@ Remember your API key!
 <h3 id="headers">Headers</h3>
 
 <p><code class="prettyprint">X-Api-Key</code>
+<code class="prettyprint">X-User-Token</code>
+<code class="prettyprint">X-User-Email</code>
 <code class="prettyprint">Content-Type</code>
 <code class="prettyprint">Cache-Control</code></p>
 
