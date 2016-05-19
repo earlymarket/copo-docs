@@ -1,0 +1,130 @@
+---
+title: Coposition API Reference
+
+language_tabs:
+  - shell: cURL
+  - javascript: node.js
+
+toc_footers:
+  - <a href='https://www.coposition.com/developers/sign_up'>Sign Up for a Developer Key</a>
+  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+
+includes:
+  - checkins
+  - signups
+  - logins
+  - devices
+  - approvals
+  - permissions
+  - users
+  - developers
+
+search: true
+---
+
+# Introduction
+
+Welcome to Coposition! You can use our API to securely store and retrieve geolocation info associated with devices and users. You can also use the api
+to view and manage permissions.
+
+You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+
+# Authentication
+
+> To authorize, use this code:
+
+```javascript
+// For brevity, the node code samples use
+// the Request module (https://www.npmjs.com/package/request)
+// But feel free to use whatever method you prefer
+// to make http requests
+
+var request = require("request");
+
+var options = { method: 'HTTP_VERB_HERE',
+  url: 'API_ENDPOINT_HERE',
+  headers:
+   { 'cache-control': 'no-cache',
+     'x-api-key': 'YOUR_API_KEY_HERE' } };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+
+```
+
+```shell
+# With cURL, you can just pass the correct header with each request
+curl "API_ENDPOINT_HERE"
+  -H "X-Api-Key: YOUR_API_KEY_HERE"
+```
+
+> Make sure to replace `YOUR_API_KEY_HERE` with your API key.
+
+Coposition uses API keys to allow access to the API. You can register a new Coposition API key at our [developer console](https://coposition.com/developers/console).
+
+Coposition expects for the API key to be included in all API requests to the server in a custom header that looks like the following:
+
+`X-Api-Key: YOUR_API_KEY_HERE`
+
+<aside class="notice">
+You must replace <code>YOUR_API_KEY_HERE</code> with your personal API key.
+</aside>
+
+# Headers
+
+List of all custom headers for reference.
+
+Header | Value
+-------------- | --------------
+X-Secret-App-Key | Key provided by Coposition for Coposition App exclusive endpoints.
+X-User-Token | Authentication token returned on sign in/sign up, destroyed on sign out.
+X-UUID | Unique identifier associated with a specific device in our database.
+X-User-Email | User's email address string
+X-User-Password | User's password string
+
+# UUID
+All hardware is identified by a **universally unique identifier** (UUID). This is because not all devices share the same identifying marks e.g. serial numbers, IMEI so we create an
+artificial one to standardize on.
+## Create a new UUID
+UUID's can be pre-generated to allow you to uniquely identify a device after manufacture.
+
+> At the moment: 1 request = 1 UUID.
+
+```shell
+curl -X GET "https://api.coposition.com/v1/uuid"
+  -H "X-Api-Key: YOUR_API_KEY_HERE"
+```
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://api.coposition.com/v1/uuid',
+  headers:
+   { 'cache-control': 'no-cache',
+     'x-api-key': 'YOUR_API_KEY_HERE' } };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "uuid": "7d274e7c-76ab-45e7-8d96-ef063ad725f8"
+}
+```
+
+### HTTP Request
+`GET https://api.coposition.com/v1/uuid`
+
+<aside class="success">
+Remember your API key!
+</aside>
+
