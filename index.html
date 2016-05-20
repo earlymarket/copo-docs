@@ -159,19 +159,17 @@ curl <span class="s2">"API_ENDPOINT_HERE"</span>
 <p>Make sure to replace <code class="prettyprint">YOUR_API_KEY_HERE</code> with your API key.</p>
 </blockquote>
 
-<p>Coposition uses API keys to allow access to the API. You can register a new Coposition API key at our <a href="https://coposition.com/developers/console">developer console</a>.</p>
-
-<p>Coposition expects for the API key to be included in all API requests to the server in a custom header that looks like the following:</p>
+<p>Coposition uses custom HTTP headers to control access to different parts of the API. All API requests are expected to have an API key header:</p>
 
 <p><code class="prettyprint">X-Api-Key: YOUR_API_KEY_HERE</code></p>
+
+<p>You can get a new Coposition API key from your <a href="https://coposition.com/developers/console">developer console</a>.</p>
 
 <aside class="notice">
 You must replace <code>YOUR_API_KEY_HERE</code> with your personal API key.
 </aside>
 
-<h1 id="headers">Headers</h1>
-
-<p>List of all custom headers for reference.</p>
+<p>Other custom headers used by the API are shown below. We&rsquo;ll revisit them when they&rsquo;re required.</p>
 
 <table><thead>
 <tr>
@@ -181,7 +179,7 @@ You must replace <code>YOUR_API_KEY_HERE</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>X-Secret-App-Key</td>
-<td>Key provided by Coposition for Coposition App exclusive endpoints.</td>
+<td>Exclusively used by the Coposition app</td>
 </tr>
 <tr>
 <td>X-User-Token</td>
@@ -193,11 +191,11 @@ You must replace <code>YOUR_API_KEY_HERE</code> with your personal API key.
 </tr>
 <tr>
 <td>X-User-Email</td>
-<td>User&rsquo;s email address string</td>
+<td>User&rsquo;s email address</td>
 </tr>
 <tr>
 <td>X-User-Password</td>
-<td>User&rsquo;s password string</td>
+<td>User&rsquo;s password</td>
 </tr>
 </tbody></table>
 
@@ -249,21 +247,27 @@ Remember your API key!
 
           <h1 id="check-ins">Check-ins</h1>
 
-<p>A check-in is our basic unit of geolocation information. At it&rsquo;s simplest it contains a latlong point, and the ID of the device it belongs to.</p>
+<p>A check-in is our basic unit of geolocation information. It has a latitude, longitude and the UUID of the device it belongs to. It can also contain an address and privacy information.</p>
+
+<h2 id="check-in-privacy">Check-in privacy</h2>
+
+<p>Coposition allows you to pass a less specific location on to your friends and apps. We call this &ldquo;fogging&rdquo;. A check-in&rsquo;s fogged location is either the centre of the nearest named urban area with a population of more than 1000 people (usually a city district, borough, town, village or suburb). If there isn&rsquo;t one within 200 miles, it is assigned a random location &plusmn;0.5 decimal degrees of latitude/longitude. This information is saved to the check-in so you can consistently report the same location.</p>
+
+<p>You may also delay sharing a check-in to a less sensitive time by changing the delay property on the parent device.</p>
 
 <h2 id="create-a-new-check-in">Create a new check-in</h2>
 
 <p>A latitude and longitude are required. You can also provide a created at date and time in the format &ldquo;yyyy-mm-dd [hh:mm:ss]&rdquo;.</p>
 <pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/v1/checkins"</span>
-  -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"X-UUID"</span>: <span class="s2">"DEVICE-UUID-HERE"</span>
-  -H <span class="s2">"Cache-Control: no-cache"</span>
-  -d <span class="s1">'{
-    "lat" : "51.588330",
-    "lng" : "-0.513069",
-    "created_at" : "2016-10-31 [10:30:12]"
-    }'</span>
+     -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
+     -H <span class="s2">"Content-Type: application/json"</span>
+     -H <span class="s2">"X-UUID"</span>: <span class="s2">"DEVICE-UUID-HERE"</span>
+     -H <span class="s2">"Cache-Control: no-cache"</span>
+     -d <span class="s1">'{
+      "lat" : "51.588330",
+      "lng" : "-0.513069",
+      "created_at" : "2016-10-31 [10:30:12]"
+     }'</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
@@ -317,8 +321,7 @@ Remember your API key!
 
 <p><code class="prettyprint">X-Api-key</code>
 <code class="prettyprint">X-UUID</code>
-<code class="prettyprint">Content-Type</code>
-<code class="prettyprint">Cache-Control</code></p>
+<code class="prettyprint">Content-Type</code></p>
 
 <h3 id="body">Body</h3>
 
@@ -337,8 +340,8 @@ Remember your API key!
 <td>-180/+180</td>
 </tr>
 <tr>
-<td>created_at</td>
-<td>&ldquo;yyyy-mm-dd [hh:mm:ss]&rdquo;</td>
+<td>created_at <em>(optional)</em></td>
+<td>A valid <a href="http://ruby-doc.org/stdlib-2.3.0/libdoc/date/rdoc/DateTime.html#method-c-parse">Ruby datetime</a> value e.g. &ldquo;yyyy-mm-dd [hh:mm:ss]&rdquo;</td>
 </tr>
 </tbody></table>
 
