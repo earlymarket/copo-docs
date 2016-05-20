@@ -1,20 +1,25 @@
 # Check-ins
-A check-in is our basic unit of geolocation information. At it's simplest it contains a latlong point, and the ID of the device it belongs to.
+A check-in is our basic unit of geolocation information. It has a latitude, longitude and the UUID of the device it belongs to. It can also contain an address and privacy information.
+
+## Check-in privacy
+Coposition allows you to pass a less specific location on to your friends and apps. We call this "fogging". A check-in's fogged location is either the centre of the nearest named urban area with a population of more than 1000 people (usually a city district, borough, town, village or suburb). If there isn't one within 200 miles, it is assigned a random location &plusmn;0.5 decimal degrees of latitude/longitude. This information is saved to the check-in so you can consistently report the same location.
+
+You may also delay sharing a check-in to a less sensitive time by changing the delay property on the parent device.
 
 ## Create a new check-in
 A latitude and longitude are required. You can also provide a created at date and time in the format "yyyy-mm-dd [hh:mm:ss]".
 
 ```shell
 curl -X PUT "https://api.coposition.com/v1/checkins"
-  -H "X-Api-Key: YOUR_API_KEY_HERE"
-  -H "Content-Type: application/json"
-  -H "X-UUID": "DEVICE-UUID-HERE"
-  -H "Cache-Control: no-cache"
-  -d '{
-    "lat" : "51.588330",
-    "lng" : "-0.513069",
-    "created_at" : "2016-10-31 [10:30:12]"
-    }'
+     -H "X-Api-Key: YOUR_API_KEY_HERE"
+     -H "Content-Type: application/json"
+     -H "X-UUID": "DEVICE-UUID-HERE"
+     -H "Cache-Control: no-cache"
+     -d '{
+      "lat" : "51.588330",
+      "lng" : "-0.513069",
+      "created_at" : "2016-10-31 [10:30:12]"
+     }'
 ```
 ```javascript
 var request = require("request");
@@ -66,14 +71,13 @@ request(options, function (error, response, body) {
 `X-Api-key`
 `X-UUID`
 `Content-Type`
-`Cache-Control`
 
 ### Body
-Attribute | Value
--------------- | --------------
-lat | -180/+180
-lng | -180/+180
-created_at | "yyyy-mm-dd [hh:mm:ss]"
+Attribute               | Value
+----------------------- | --------------------------------------------------------
+lat                     | -180/+180
+lng                     | -180/+180
+created_at *(optional)* | A valid [Ruby datetime](http://ruby-doc.org/stdlib-2.3.0/libdoc/date/rdoc/DateTime.html#method-c-parse) value e.g. "yyyy-mm-dd [hh:mm:ss]"
 
 
 ##  Get a list of user checkins

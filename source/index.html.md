@@ -20,6 +20,7 @@ includes:
   - developers
 
 search: true
+
 ---
 
 # Introduction
@@ -63,27 +64,25 @@ curl "API_ENDPOINT_HERE"
 
 > Make sure to replace `YOUR_API_KEY_HERE` with your API key.
 
-Coposition uses API keys to allow access to the API. You can register a new Coposition API key at our [developer console](https://coposition.com/developers/console).
-
-Coposition expects for the API key to be included in all API requests to the server in a custom header that looks like the following:
+Coposition uses custom HTTP headers to control access to different parts of the API. All API requests are expected to have an API key header:
 
 `X-Api-Key: YOUR_API_KEY_HERE`
+
+You can get a new Coposition API key from your [developer console](https://coposition.com/developers/console).
 
 <aside class="notice">
 You must replace <code>YOUR_API_KEY_HERE</code> with your personal API key.
 </aside>
 
-# Headers
+Other custom headers used by the API are shown below. We'll revisit them when they're required.
 
-List of all custom headers for reference.
-
-Header | Value
--------------- | --------------
-X-Secret-App-Key | Key provided by Coposition for Coposition App exclusive endpoints.
-X-User-Token | Authentication token returned on sign in/sign up, destroyed on sign out.
-X-UUID | Unique identifier associated with a specific device in our database.
-X-User-Email | User's email address string
-X-User-Password | User's password string
+Header           | Value
+---------------- | ------------------------------------------------------------------------
+X-Secret-App-Key | Exclusively used by the Coposition app
+X-User-Token     | Authentication token returned on sign in/sign up, destroyed on sign out.
+X-UUID           | Unique identifier associated with a specific device in our database.
+X-User-Email     | User's email address
+X-User-Password  | User's password
 
 # UUID
 All hardware is identified by a **universally unique identifier** (UUID). This is because not all devices share the same identifying marks e.g. serial numbers, IMEI so we create an
