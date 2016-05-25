@@ -348,13 +348,13 @@ Remember your API key!
 <h2 id="get-a-list-of-user-checkins">Get a list of user checkins</h2>
 
 <p>Get a list of a user&rsquo;s checkins, you can choose to geocode the checkins to get a full address if available, you can specific a device from which you want checkins from and how many checkins you want to receive.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com}v1/users/USER_ID/devices/DEVICE_ID/checkins/"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com}v1/users/USER_ID/checkins/"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com}v1/users/USER_ID/devices/DEVICE_ID/checkins/'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com}v1/users/USER_ID/checkins/'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
@@ -404,21 +404,25 @@ Remember your API key!
 
 <p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/checkins/</code></p>
 
-<p>For checkins for a specific device.</p>
+<p>This can be filtered by a specific device.</p>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/checkins/</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/checkins?device_id=DEVICE_ID</code></p>
 
 <p>For geocoded (address generated) checkins</p>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/checkins/?type=address</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/checkins?device_id=DEVICE_ID&amp;type=address</code></p>
 
 <p>Choose between 30 (default) to 1000 checkins per request.</p>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/checkins/?per_page=100&amp;page=2</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/checkins?device_id=DEVICE_ID&amp;per_page=100&amp;page=2</code></p>
 
 <p>Just the last checkin</p>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/checkins/last</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/checkins/last</code></p>
+
+<p>This can also be filtered by device</p>
+
+<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/checkins/last?device_id=DEVICE_ID</code></p>
 
 <h3 id="headers">Headers</h3>
 
