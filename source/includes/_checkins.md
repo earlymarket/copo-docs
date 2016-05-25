@@ -84,14 +84,14 @@ created_at *(optional)* | A valid [Ruby datetime](http://ruby-doc.org/stdlib-2.3
 Get a list of a user's checkins, you can choose to geocode the checkins to get a full address if available, you can specific a device from which you want checkins from and how many checkins you want to receive.
 
 ```shell
-curl -X GET "https://api.coposition.com}v1/users/USER_ID/checkins/"
+curl -X GET "https://api.coposition.com}v1/users/USER_ID/devices/DEVICE_ID/checkins/"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
 ```
 ```javascript
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com}v1/users/USER_ID/checkins/',
+  url: 'https://api.coposition.com}v1/users/USER_ID/devices/DEVICE_ID/checkins/',
   headers:
    { 'x-api-key': 'YOUR_API_KEY_HERE' },
   json: true };
@@ -138,27 +138,21 @@ request(options, function (error, response, body) {
 
 For checkins for a user.
 
-`GET https://api.coposition.com/v1/users/USER_ID/checkins/`
-
-This can be filtered by a specific device.
-
-`GET https://api.coposition.com/v1/users/USER_ID/checkins?device_id=DEVICE_ID`
-
-For geocoded (address generated) checkins
-
-`GET https://api.coposition.com/v1/users/USER_ID/checkins?device_id=DEVICE_ID&type=address`
-
-Choose between 30 (default) to 1000 checkins per request.
-
-`GET https://api.coposition.com/v1/users/USER_ID/checkins?device_id=DEVICE_ID&per_page=100&page=2`
+`GET https://api.coposition.com/v1/users/USER_ID/checkins`
 
 Just the last checkin
 
 `GET https://api.coposition.com/v1/users/USER_ID/checkins/last`
 
-This can also be filtered by device
+#### Optional filters
 
-`GET https://api.coposition.com/v1/users/USER_ID/checkins/last?device_id=DEVICE_ID`
+You can specify additional filtering in the query string
+
+Option                                          | Query string
+----------------------------------------------- | --------------------------------------------------------
+Filter by device                                | `?device_id=DEVICE_ID`
+Geocode/show street address                     | `?type=address`
+Page and results per page (default 30 max 1000) | `?per_page=100&page=2`
 
 ### Headers
 
