@@ -1,7 +1,7 @@
 # Sign up
 ## Signing up for coposition
 ```shell
-curl -X POST "https://api.coposition.com/v1/users"
+curl -X POST "https://coposition.com/users"
   -H "Content-Type: application/json"
   -H "X-Secret-App-Key: SECRET_APP_KEY_HERE"
   -H "Cache-Control: no-cache"
@@ -17,7 +17,7 @@ curl -X POST "https://api.coposition.com/v1/users"
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://api.coposition.com/v1/users',
+  url: 'https://coposition.com/users',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -47,7 +47,7 @@ request(options, function (error, response, body) {
 }
 ```
 ### HTTP Request
-`POST https://api.coposition.com/v1/users`
+`POST https://coposition.com/users`
 
 ### Headers
 

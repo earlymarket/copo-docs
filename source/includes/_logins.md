@@ -1,7 +1,7 @@
 # Log in/out
 ## Logging into an account
 ```shell
-curl -X POST "https://api.coposition.com/v1/users/sign_in"
+curl -X POST "https://coposition.com/users/sign_in"
   -H "Content-Type: application/json"
   -H "X-Secret-App-Key: SECRET_APP_KEY_HERE"
   -H "Cache-Control: no-cache"
@@ -16,7 +16,7 @@ curl -X POST "https://api.coposition.com/v1/users/sign_in"
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://api.coposition.com/v1/users/sign_in',
+  url: 'https://coposition.com/users/sign_in',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -44,7 +44,7 @@ request(options, function (error, response, body) {
 ]
 ```
 ### HTTP Request
-`POST https://api.coposition.com/v1/users/sign_in`
+`POST https://coposition.com/users/sign_in`
 
 ### Headers
 
@@ -61,7 +61,7 @@ password | "password"
 
 ## Logging out an account
 ```shell
-curl -X DELETE "https://api.coposition.com/v1/users/sign_out"
+curl -X DELETE "https://coposition.com/users/sign_out"
   -H "Content-Type: application/json"
   -H "X-Secret-App-Key: SECRET_APP_KEY_HERE"
   -H "Cache-Control: no-cache"
@@ -71,7 +71,7 @@ curl -X DELETE "https://api.coposition.com/v1/users/sign_out"
 var request = require("request");
 
 var options = { method: 'DELETE',
-  url: 'https://api.coposition.com/v1/users/sign_out',
+  url: 'https://coposition.com/users/sign_out',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -94,7 +94,7 @@ request(options, function (error, response, body) {
 }
 ```
 ### HTTP Request
-`DELETE https://api.coposition.com/v1/users/sign_out`
+`DELETE https://coposition.com/users/sign_out`
 
 ### Headers
 
