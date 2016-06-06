@@ -262,7 +262,7 @@ Remember your API key!
 <pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/v1/checkins"</span>
      -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
      -H <span class="s2">"Content-Type: application/json"</span>
-     -H <span class="s2">"X-UUID"</span>: <span class="s2">"DEVICE-UUID-HERE"</span>
+     -H <span class="s2">"X-UUID: DEVICE-UUID-HERE"</span>
      -H <span class="s2">"Cache-Control: no-cache"</span>
      -d <span class="s1">'{
       "lat" : "51.588330",
@@ -349,13 +349,13 @@ Remember your API key!
 <h2 id="get-a-list-of-user-checkins">Get a list of user checkins</h2>
 
 <p>Get a list of a user&rsquo;s checkins, you can choose to geocode the checkins to get a full address if available, you can specific a device from which you want checkins from and how many checkins you want to receive.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com}v1/users/USER_ID/devices/DEVICE_ID/checkins/"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users/USER_ID/checkins/"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com}v1/users/USER_ID/devices/DEVICE_ID/checkins/'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/checkins/'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
