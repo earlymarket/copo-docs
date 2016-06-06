@@ -13,7 +13,7 @@ A latitude and longitude are required. You can also provide a created at date an
 curl -X PUT "https://api.coposition.com/v1/checkins"
      -H "X-Api-Key: YOUR_API_KEY_HERE"
      -H "Content-Type: application/json"
-     -H "X-UUID": "DEVICE-UUID-HERE"
+     -H "X-UUID: DEVICE-UUID-HERE"
      -H "Cache-Control: no-cache"
      -d '{
       "lat" : "51.588330",
@@ -84,14 +84,14 @@ created_at *(optional)* | A valid [Ruby datetime](http://ruby-doc.org/stdlib-2.3
 Get a list of a user's checkins, you can choose to geocode the checkins to get a full address if available, you can specific a device from which you want checkins from and how many checkins you want to receive.
 
 ```shell
-curl -X GET "https://api.coposition.com}v1/users/USER_ID/devices/DEVICE_ID/checkins/"
+curl -X GET "https://api.coposition.com/v1/users/USER_ID/checkins/"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
 ```
 ```javascript
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com}v1/users/USER_ID/devices/DEVICE_ID/checkins/',
+  url: 'https://api.coposition.com/v1/users/USER_ID/checkins/',
   headers:
    { 'x-api-key': 'YOUR_API_KEY_HERE' },
   json: true };
