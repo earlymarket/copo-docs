@@ -7,7 +7,8 @@ language_tabs:
 
 toc_footers:
   - <a href='https://www.coposition.com/developers/sign_up'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - ~or~
+  - <a href="https://coposition.com/developers/console">Log In to your Developer Console</a>
 
 includes:
   - checkins
