@@ -19,6 +19,7 @@ includes:
   - permissions
   - users
   - developers
+  - configs
 
 search: true
 
