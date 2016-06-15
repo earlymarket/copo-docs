@@ -258,7 +258,7 @@ Remember your API key!
 
 <h2 id="create-a-new-check-in">Create a new check-in</h2>
 
-<p>A latitude and longitude are required. You can also provide a created at date and time in the format &ldquo;yyyy-mm-dd [hh:mm:ss]&rdquo;.</p>
+<p>A latitude and longitude are required. You can also provide a created at date and time in the format &ldquo;yyyy-mm-dd [hh:mm:ss]&rdquo;. If the API key belongs to the developer who originally created the device, the device config will also be returned.</p>
 <pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/v1/checkins"</span>
      -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
      -H <span class="s2">"Content-Type: application/json"</span>
@@ -291,27 +291,38 @@ Remember your API key!
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured like this.
+Config will only be returned if checkin is created with the api key of the developer who created the device.</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">41649</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.58833</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.513069</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-31T10:30:12.549Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-31T10:30:12.214Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b64f4dbb-7981-44bd-88a8-d9626259f720"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No address available"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fogged"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fogged_lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.60333</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fogged_lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.48546</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fogged_area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harefield"</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18623</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.58833</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.513069</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-15T14:49:09.364Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-15T14:49:09.364Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b22d4382-9961-4262-a6b5-c6f841f2501e"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not yet geocoded"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GB"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fogged"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fogged_lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.60333</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fogged_lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.48546</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fogged_area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harefield"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"developer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"custom"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-08T07:59:17.005Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-13T09:27:52.338Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -763,24 +774,18 @@ Remember your API key!
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">62</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbd002bd-20d6-412e-b756-e5ab058713ca"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="p">,</span><span class="w">
     </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"laptop"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fogged"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"delayed"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"empty"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nt">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">62</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbd002bd-20d6-412e-b756-e5ab058713ca"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
     </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"laptop"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fogged"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"delayed"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computer"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nt">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -789,7 +794,7 @@ Remember your API key!
 
 <p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/devices</code></p>
 
-<p>For a specific device</p>
+<p>For a specific device (will return full device info if developer configures device)</p>
 
 <p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID</code></p>
 
@@ -1379,6 +1384,176 @@ Remember your API key!
 <p><code class="prettyprint">X-Api-Key</code>
 <code class="prettyprint">Content-Type</code>
 <code class="prettyprint">Cache-Control</code></p>
+
+          <h1 id="configs">Configs</h1>
+
+<p>Configs allow developers to set and control any additional device settings they would like. For example, a developer producing a tracking device may want to be able to control the how often the tracking device checks in. Configs are created when a developer requests a UUID. The device with this UUID will have a config that can be updated by the developer.</p>
+
+<h2 id="getting-a-list-of-configs">Getting a list of configs</h2>
+
+<p>Use this endpoint to see a list of device configs under your control.</p>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/configs/"</span>
+  -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/configs/'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span>
+   <span class="p">{</span> <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"developer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"custom"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-09T11:22:22.109Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-09T11:22:22.109Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.coposition.com/v1/configs</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<p><code class="prettyprint">X-Api-Key</code></p>
+
+<h2 id="getting-a-specific-config">Getting a specific config</h2>
+
+<p>Use this endpoint to see a specific config</p>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/configs/CONFIG_ID"</span>
+  -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/configs/CONFIG_ID'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span>
+   <span class="p">{</span> <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"developer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"custom"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-09T11:22:22.109Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-09T11:22:22.109Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.coposition.com/v1/configs/CONFIG_ID</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<p><code class="prettyprint">X-Api-Key</code></p>
+
+<h2 id="updating-a-specific-config">Updating a specific config</h2>
+
+<p>Use this endpoint to update a specific config. Any and as many key/value combinations you want can go within custom, type/mode/frequency are just examples.</p>
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/v1/configs/CONFIG_ID"</span>
+  -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+    "config": {
+      "custom": {
+        "type": "herds",
+        "mode": "accurate",
+        "frequency": "1000"
+        }
+      }
+    }'</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/configs/CONFIG_ID'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span>
+    <span class="p">{</span> <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span>
+      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
+    <span class="na">body</span><span class="p">:</span> <span class="p">{</span> <span class="na">config</span><span class="p">:</span> <span class="p">{</span> <span class="na">custom</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"herds"</span><span class="p">,</span> <span class="s2">"mode"</span><span class="p">:</span> <span class="s2">"accurate"</span><span class="p">,</span> <span class="s2">"frequency"</span><span class="p">:</span> <span class="s2">"1000"</span> <span class="p">}</span> <span class="p">}</span> <span class="p">},</span>
+    <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"developer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">195</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"custom"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"herds"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accurate"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-09T11:22:22.451Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-15T14:22:13.214Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://api.coposition.com/v1/configs/CONFIG_ID</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<p><code class="prettyprint">X-Api-Key</code>
+&lsquo;Content-Type&rsquo;</p>
+
+<h3 id="body">Body</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>config</td>
+<td>custom</td>
+</tr>
+<tr>
+<td>custom</td>
+<td>{ &#39;any key&rsquo;: &#39;any value&rsquo; }</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
