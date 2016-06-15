@@ -90,7 +90,7 @@ X-User-Password  | User's password
 All hardware is identified by a **universally unique identifier** (UUID). This is because not all devices share the same identifying marks e.g. serial numbers, IMEI so we create an
 artificial one to standardize on.
 ## Create a new UUID
-UUID's can be pre-generated to allow you to uniquely identify a device after manufacture.
+UUID's can be pre-generated to allow you to uniquely identify a device after manufacture. When you request a UUID, a device config will also be created allowing you the developer to control any additional device settings you may want to configure.
 
 > At the moment: 1 request = 1 UUID.
 
