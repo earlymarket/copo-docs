@@ -103,31 +103,25 @@ request(options, function (error, response, body) {
 ```json
 [
   {
-    "id": 62,
-    "uuid": "fbd002bd-20d6-412e-b756-e5ab058713ca",
+    "id": 54,
     "user_id": 2,
-    "name": "laptop",
-    "fogged": false,
-    "delayed": null,
+    "name": "empty",
     "alias": null,
     "published": false
   },
   {
-    "id": 62,
-    "uuid": "fbd002bd-20d6-412e-b756-e5ab058713ca",
+    "id": 7,
     "user_id": 2,
-    "name": "laptop",
-    "fogged": false,
-    "delayed": null,
+    "name": "Computer",
     "alias": null,
-    "published": false
+    "published": true
   }
 ]
 ```
 ### HTTP Request
 `GET https://api.coposition.com/v1/users/USER_ID/devices`
 
-For a specific device
+For a specific device (will return full device info if developer configures device)
 
 `GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID`
 

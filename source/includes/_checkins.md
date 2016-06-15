@@ -7,7 +7,7 @@ Coposition allows you to pass a less specific location on to your friends and ap
 You may also delay sharing a check-in to a less sensitive time by changing the delay property on the parent device.
 
 ## Create a new check-in
-A latitude and longitude are required. You can also provide a created at date and time in the format "yyyy-mm-dd [hh:mm:ss]".
+A latitude and longitude are required. You can also provide a created at date and time in the format "yyyy-mm-dd [hh:mm:ss]". If the API key belongs to the developer who originally created the device, the device config will also be returned.
 
 ```shell
 curl -X PUT "https://api.coposition.com/v1/checkins"
@@ -41,28 +41,39 @@ request(options, function (error, response, body) {
 });
 
 ```
-> The above command returns JSON structured like this:
+> The above command returns JSON structured like this.
+> Config will only be returned if checkin is created with the api key of the developer who created the device.
 
 ```json
-[
-  {
-    "id": 41649,
-    "lat": 51.58833,
-    "lng": -0.513069,
-    "created_at": "2016-10-31T10:30:12.549Z",
-    "updated_at": "2016-10-31T10:30:12.214Z",
-    "uuid": "b64f4dbb-7981-44bd-88a8-d9626259f720",
-    "device_id": 65,
-    "address": "No address available",
-    "city": null,
-    "postal_code": null,
-    "country_code": null,
-    "fogged": true,
-    "fogged_lat": 51.60333,
-    "fogged_lng": -0.48546,
-    "fogged_area": "Harefield"
+{
+  "data": [
+    {
+      "id": 18623,
+      "lat": 51.58833,
+      "lng": -0.513069,
+      "created_at": "2016-06-15T14:49:09.364Z",
+      "updated_at": "2016-06-15T14:49:09.364Z",
+      "uuid": "b22d4382-9961-4262-a6b5-c6f841f2501e",
+      "device_id": 7,
+      "address": "Not yet geocoded",
+      "city": null,
+      "postal_code": null,
+      "country_code": "GB",
+      "fogged": false,
+      "fogged_lat": 51.60333,
+      "fogged_lng": -0.48546,
+      "fogged_area": "Harefield"
+    }
+  ],
+  "config": {
+    "id": 23,
+    "developer_id": 2,
+    "device_id": 7,
+    "custom": null,
+    "created_at": "2016-06-08T07:59:17.005Z",
+    "updated_at": "2016-06-13T09:27:52.338Z"
   }
-]
+}
 ```
 ### HTTP Request
 `POST https://api.coposition.com/v1/checkins`
