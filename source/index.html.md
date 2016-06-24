@@ -44,7 +44,8 @@ You can view code examples in the dark area to the right, and you can switch the
 
 var request = require("request");
 
-var options = { method: 'HTTP_VERB_HERE',
+var options = {
+  method: 'HTTP_VERB_HERE',
   url: 'API_ENDPOINT_HERE',
   headers:
    { 'cache-control': 'no-cache',
