@@ -365,7 +365,8 @@ Config will only be returned if checkin is created with the api key of the devel
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/checkins/'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
