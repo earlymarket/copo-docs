@@ -101,7 +101,8 @@ curl -X GET "https://api.coposition.com/v1/users/USER_ID/checkins/"
 ```javascript
 var request = require("request");
 
-var options = { method: 'GET',
+var options = {
+  method: 'GET',
   url: 'https://api.coposition.com/v1/users/USER_ID/checkins/',
   headers:
    { 'x-api-key': 'YOUR_API_KEY_HERE' },
