@@ -20,6 +20,7 @@ includes:
   - users
   - developers
   - configs
+  - errors
 
 search: true
 
