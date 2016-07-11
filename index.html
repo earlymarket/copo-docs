@@ -1557,6 +1557,41 @@ Config will only be returned if checkin is created with the api key of the devel
 </tr>
 </tbody></table>
 
+          <h1 id="errors">Errors</h1>
+
+<p>The Coposition API uses the following error codes.
+<aside class="notice">
+  Most errors will return both an error code a short error message giving further details.
+</aside></p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request is missing required parameters.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong, a user has not approved you or you need to sign in.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; You do not have access to the specified resource.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified resource or endpoint could not be found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
