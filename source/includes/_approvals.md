@@ -7,7 +7,6 @@ Use this endpoint to create a pending approval between an App/User and the curre
 ```shell
 curl -X POST "https://api.coposition.com/v1/users/USER_ID/approvals/"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
-  -H "X-Secret-App-Key: SECRET_APP_KEY"
   -H "Content-Type: application/json"
   -H "Cache-Control: no-cache"
   -d '{
@@ -25,8 +24,7 @@ var options = { method: 'POST',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
-     'X-Api-Key': 'YOUR_API_KEY_HERE'
-     'X-Secret-App-Key': 'SECRET_APP_KEY_HERE' },
+     'X-Api-Key': 'YOUR_API_KEY_HERE'},
   body: { approval: { approvable: DEVELOPER_ID, approvable_type: 'Developer' } },
   json: true };
 
@@ -57,7 +55,6 @@ request(options, function (error, response, body) {
 ### Headers
 
 `X-Api-Key`
-`X-Secret-App-Key`
 `Content-Type`
 `Cache-Control`
 

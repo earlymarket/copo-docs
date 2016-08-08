@@ -43,7 +43,6 @@ request(options, function (error, response, body) {
 ### Headers
 
 `X-Api-Key`
-`X-Secret-App-Key`
 `Content-Type`
 `Cache-Control`
 
