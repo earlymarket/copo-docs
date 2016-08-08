@@ -8,7 +8,6 @@ curl -X GET "https://api.coposition.com/v1/users/USER_ID"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "Content-Type: application/json"
   -H "Cache-Control: no-cache"
-  -H "X-Secret-App-Key: SECRET_APP_KEY"
 ```
 ```javascript
 var request = require("request");
@@ -18,8 +17,7 @@ var options = { method: 'GET',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
-     'X-Api-Key': 'YOUR_API_KEY_HERE'
-     'X-Secret-App-Key': 'SECRET_APP_KEY' },
+     'X-Api-Key': 'YOUR_API_KEY_HERE' },
   json: true };
 
 request(options, function (error, response, body) {
@@ -46,5 +44,60 @@ request(options, function (error, response, body) {
 
 `X-Api-Key`
 `X-Secret-App-Key`
+`Content-Type`
+`Cache-Control`
+
+## Getting app users
+
+Allows you to view a list of users who have approved your app/developer.
+
+```shell
+curl -X GET "https://api.coposition.com/v1/users"
+  -H "X-Api-Key: YOUR_API_KEY_HERE"
+  -H "Content-Type: application/json"
+  -H "Cache-Control: no-cache"
+```
+```javascript
+var request = require("request");
+
+var options = { method: 'GET',
+  url: 'https://api.coposition.com/v1/users',
+  headers:
+   { 'cache-control': 'no-cache',
+     'content-type': 'application/json',
+     'X-Api-Key': 'YOUR_API_KEY_HERE'},
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+
+```
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 2,
+    "email": "tom@email.com",
+    "username": "tom",
+    "slug": "tom"
+  },
+  {
+    "id": 3,
+    "email": "sam@email.com",
+    "username": "sam",
+    "slug": "sam"
+  }
+]
+```
+### HTTP Request
+`GET https://api.coposition.com/v1/users`
+
+### Headers
+
+`X-Api-Key`
 `Content-Type`
 `Cache-Control`
