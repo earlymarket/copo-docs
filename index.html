@@ -1280,56 +1280,9 @@ Config will only be returned if checkin is created with the api key of the devel
 
           <h1 id="users">Users</h1>
 
-<h2 id="showing-user-info">Showing user info</h2>
-
-<p>Allows you to view user info such as username and ID which can be used in creating/updating an approval or updating permissions for a device.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users/USER_ID"</span>
-  -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"Cache-Control: no-cache"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
-
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span>
-   <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
-     <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
-     <span class="s1">'X-Api-Key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
-  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delia.kirlin@ortiz.biz"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coporulez"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coporulez"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID</code></p>
-
-<h3 id="headers">Headers</h3>
-
-<p><code class="prettyprint">X-Api-Key</code>
-<code class="prettyprint">Content-Type</code>
-<code class="prettyprint">Cache-Control</code></p>
-
 <h2 id="getting-app-users">Getting app users</h2>
 
-<p>Allows you to view a list of users who have approved your app/developer.</p>
+<p>Allows you to view a list of users who have approved your app/developer and obtain user ID&rsquo;s which can be used in creating/updating an approval or updating permissions for a device.</p>
 <pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -1375,6 +1328,53 @@ Config will only be returned if checkin is created with the api key of the devel
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET https://api.coposition.com/v1/users</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<p><code class="prettyprint">X-Api-Key</code>
+<code class="prettyprint">Content-Type</code>
+<code class="prettyprint">Cache-Control</code></p>
+
+<h2 id="showing-user-info">Showing user info</h2>
+
+<p>Allows you to view user info such as username and email.</p>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users/USER_ID"</span>
+  -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Cache-Control: no-cache"</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span>
+   <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
+     <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
+     <span class="s1">'X-Api-Key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delia.kirlin@ortiz.biz"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coporulez"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coporulez"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID</code></p>
 
 <h3 id="headers">Headers</h3>
 
