@@ -40,18 +40,26 @@ request(options, function (error, response, body) {
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 62,
-    "uuid": "fbd002bd-20d6-412e-b756-e5ab058713ca",
-    "user_id": 2,
-    "name": "laptop",
+{
+  "data": {
+    "id": 1,
+    "uuid": "95515f5a-c89c-476d-9360-f58a12fb3878",
+    "user_id": 1,
+    "name": "mobile",
     "fogged": false,
     "delayed": null,
     "alias": null,
     "published": false
+  },
+  "config": {
+    "id": 1,
+    "developer_id": 1,
+    "device_id": 1,
+    "custom": null,
+    "created_at": "2016-08-30T10:48:15.911Z",
+    "updated_at": "2016-08-30T10:48:15.911Z"
   }
-]
+}
 ```
 ### HTTP Request
 `POST https://api.coposition.com/v1/users/USER_ID/devices`
@@ -125,6 +133,31 @@ For a specific device (will return full device info if developer configures devi
 
 `GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID`
 
+> For a specific device:
+
+```json
+{
+  "data": {
+    "id": 1,
+    "uuid": "95515f5a-c89c-476d-9360-f58a12fb3878",
+    "user_id": 1,
+    "name": "mobile",
+    "fogged": false,
+    "delayed": null,
+    "alias": null,
+    "published": false
+  },
+  "config": {
+    "id": 1,
+    "developer_id": 1,
+    "device_id": 1,
+    "custom": null,
+    "created_at": "2016-08-30T10:48:15.911Z",
+    "updated_at": "2016-08-30T10:48:15.911Z"
+  }
+}
+```
+
 ### Headers
 
 `X-Api-Key`
@@ -171,18 +204,26 @@ request(options, function (error, response, body) {
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 62,
-    "uuid": "fbd002bd-20d6-412e-b756-e5ab058713ca",
-    "user_id": 2,
-    "name": "laptop",
+{
+  "data": {
+    "id": 1,
+    "uuid": "95515f5a-c89c-476d-9360-f58a12fb3878",
+    "user_id": 1,
+    "name": "mobile",
     "fogged": false,
     "delayed": 10,
     "alias": null,
     "published": true
+  },
+  "config": {
+    "id": 1,
+    "developer_id": 1,
+    "device_id": 1,
+    "custom": null,
+    "created_at": "2016-08-30T10:48:15.911Z",
+    "updated_at": "2016-08-30T10:48:15.911Z"
   }
-]
+}
 ```
 ### HTTP Request
 `PUT https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID`
