@@ -165,8 +165,8 @@ Option                                                  | Query string
 Filter by device                                        | `?device_id=DEVICE_ID`
 Show street address (only when filtering by device)     | `?type=address`
 Page and results per page (default 30 max 1000)         | `?per_page=100&page=2`
-Filter by date                                          | `?date=DD MM YYYY
-Find checkins near to coordinates                       | `?near=[LATITUDE LONGITUDE]
+Filter by date                                          | `?date=DD MM YYYY`
+Find checkins near to coordinates                       | `?near=[LATITUDE LONGITUDE]`
 Returns only one checkin for each area you have visited | `?unique_places=true`
 Find check-ins created in the last n hours/days/weeks   | `?time_unit=UNIT&time_amount=AMOUNT e.g. ?time_unit=day&time_amount=10`
 
