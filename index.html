@@ -437,12 +437,28 @@ Config will only be returned if checkin is created with the api key of the devel
 <td><code class="prettyprint">?device_id=DEVICE_ID</code></td>
 </tr>
 <tr>
-<td>Geocode/show street address</td>
+<td>Show street address (only when filtering by device)</td>
 <td><code class="prettyprint">?type=address</code></td>
 </tr>
 <tr>
 <td>Page and results per page (default 30 max 1000)</td>
 <td><code class="prettyprint">?per_page=100&amp;page=2</code></td>
+</tr>
+<tr>
+<td>Filter by date</td>
+<td><code class="prettyprint">?date=DD MM YYYY</code></td>
+</tr>
+<tr>
+<td>Find checkins near to coordinates</td>
+<td><code class="prettyprint">?near=[LATITUDE LONGITUDE]</code></td>
+</tr>
+<tr>
+<td>Returns only one checkin for each area you have visited</td>
+<td><code class="prettyprint">?unique_places=true</code></td>
+</tr>
+<tr>
+<td>Find check-ins created in the last n hours/days/weeks</td>
+<td><code class="prettyprint">?time_unit=UNIT&amp;time_amount=AMOUNT e.g. ?time_unit=day&amp;time_amount=10</code></td>
 </tr>
 </tbody></table>
 
