@@ -213,13 +213,13 @@ artificial one to standardize on.</p>
 <blockquote>
 <p>At the moment: 1 request = 1 UUID.</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/uuid"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/uuid"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/uuid'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/uuid'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">}</span> <span class="p">};</span>
@@ -241,7 +241,7 @@ artificial one to standardize on.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/uuid</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/uuid</code></p>
 
 <aside class="success">
 Remember your API key!
@@ -260,7 +260,7 @@ Remember your API key!
 <h2 id="create-a-new-check-in">Create a new check-in</h2>
 
 <p>A latitude and longitude are required. You can also provide a created at date and time in the format &ldquo;yyyy-mm-dd [hh:mm:ss]&rdquo;. If the API key belongs to the developer who originally created the device, the device config will also be returned.</p>
-<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/v1/checkins"</span>
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/checkins"</span>
      -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
      -H <span class="s2">"Content-Type: application/json"</span>
      -H <span class="s2">"X-UUID: DEVICE-UUID-HERE"</span>
@@ -274,7 +274,7 @@ Remember your API key!
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/checkins'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/checkins'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -328,7 +328,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.coposition.com/v1/checkins</code></p>
+<p><code class="prettyprint">POST https://api.coposition.com/checkins</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -361,14 +361,14 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="get-a-list-of-user-checkins">Get a list of user checkins</h2>
 
 <p>Get a list of a user&rsquo;s checkins, you can choose to geocode the checkins to get a full address if available, you can specific a device from which you want checkins from and how many checkins you want to receive.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users/USER_ID/checkins/"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/users/USER_ID/checkins/"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/checkins/'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID/checkins/'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
@@ -416,11 +416,11 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <p>For checkins for a user.</p>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/checkins</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/users/USER_ID/checkins</code></p>
 
 <p>Just the last checkin</p>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/checkins/last</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/users/USER_ID/checkins/last</code></p>
 
 <h4 id="optional-filters">Optional filters</h4>
 
@@ -681,7 +681,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="creating-a-new-device">Creating a new device</h2>
 
 <p>Creates a new device for the current user.</p>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.coposition.com/v1/users/USER_ID/devices"</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.coposition.com/users/USER_ID/devices"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"X-User-Token: USER_AUTH_TOKEN"</span>
@@ -696,7 +696,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/devices'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID/devices'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -741,7 +741,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.coposition.com/v1/users/USER_ID/devices</code></p>
+<p><code class="prettyprint">POST https://api.coposition.com/users/USER_ID/devices</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -772,7 +772,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="get-a-list-of-user-39-s-devices">Get a list of user&rsquo;s devices</h2>
 
 <p>Returns a list of devices belonging to the specified user. The user must have approved your App.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users/USER_ID/devices"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/users/USER_ID/devices"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Cache-Control: no-cache"</span>
@@ -780,7 +780,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/devices'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID/devices'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -818,11 +818,11 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/devices</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/users/USER_ID/devices</code></p>
 
 <p>For a specific device (will return full device info if developer configures device)</p>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/users/USER_ID/devices/DEVICE_ID</code></p>
 
 <blockquote>
 <p>For a specific device:</p>
@@ -858,7 +858,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="update-device-settings">Update device settings</h2>
 
 <p>You can fog, delay or share a device. Checkins created while a device is fogged will have their address shown as the nearest city rather than the exact location. Delay works by not making checkins available to your data consumers until x minutes after they have been created. Publishing a device allows anyone with a coposition account access to your latest fogged or unfogged location for this device.</p>
-<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID"</span>
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/users/USER_ID/devices/DEVICE_ID"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"X-User-Token: USER_AUTH_TOKEN"</span>
   -H <span class="s2">"X-User-Email: USER_EMAIL"</span>
@@ -873,7 +873,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID/devices/DEVICE_ID'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -918,7 +918,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID</code></p>
+<p><code class="prettyprint">PUT https://api.coposition.com/users/USER_ID/devices/DEVICE_ID</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -955,7 +955,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="asking-for-approval">Asking for approval</h2>
 
 <p>Use this endpoint to create a pending approval between an App/User and the current User.</p>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.coposition.com/v1/users/USER_ID/approvals/"</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.coposition.com/users/USER_ID/approvals/"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Cache-Control: no-cache"</span>
@@ -969,7 +969,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/approvals/'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID/approvals/'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -1002,7 +1002,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.coposition.com/v1/users/USER_ID/approvals/</code></p>
+<p><code class="prettyprint">POST https://api.coposition.com/users/USER_ID/approvals/</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -1035,7 +1035,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="getting-a-list-of-approvals-including-pending-approvals">Getting a list of approvals including pending approvals</h2>
 
 <p>Gets a list of accepted/pending approvals belonging to a user. Returns the approval_id which is used in approved/rejecting an approval.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users/USER_ID/approvals/"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/users/USER_ID/approvals/"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"X-User-Token: USER_AUTH_TOKEN"</span>
   -H <span class="s2">"X-User-Email: USER_EMAIL"</span>
@@ -1043,7 +1043,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/approvals/'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID/approvals/'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'X-Api-Key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span>
      <span class="s1">'X-User-Token'</span><span class="p">:</span> <span class="s1">'USER_AUTH_TOKEN'</span><span class="p">,</span>
@@ -1087,7 +1087,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/approvals/</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/users/USER_ID/approvals/</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -1100,7 +1100,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="approving-rejecting-revoking-an-approval">Approving/Rejecting/Revoking an approval</h2>
 
 <p>User needs to approve an approval in order to let a friend/app see their location data. A user can also choose to reject an approval or revoke an existing approval.</p>
-<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/v1/users/USER_ID/approvals/APPROVAL_ID"</span>
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/users/USER_ID/approvals/APPROVAL_ID"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"X-User-Token: USER_AUTH_TOKEN"</span>
@@ -1115,7 +1115,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/approvals/APPROVAL_ID'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID/approvals/APPROVAL_ID'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -1150,7 +1150,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://api.coposition.com/v1/users/USER_ID/approvals/APPROVAL_ID</code></p>
+<p><code class="prettyprint">PUT https://api.coposition.com/users/USER_ID/approvals/APPROVAL_ID</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -1183,7 +1183,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="listing-permissions">Listing Permissions</h2>
 
 <p>Lists all of a device permission settings, returns id of permission which can be used for updating a permission.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"X-User-Token: USER_AUTH_TOKEN"</span>
   -H <span class="s2">"X-User-Email: USER_EMAIL"</span>
@@ -1193,7 +1193,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -1237,7 +1237,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -1250,7 +1250,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="edit-permissions">Edit Permissions</h2>
 
 <p>Update device permissions for a Developer/App or User. Permission settings include privilege level, bypass fogging and bypass delay. Privilege level controls the access a consumer has, disallowed, last_only (can only view last checkin) or complete.</p>
-<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID"</span>
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"X-User-Token: USER_AUTH_TOKEN"</span>
   -H <span class="s2">"X-User-Email: USER_EMAIL"</span>
@@ -1265,7 +1265,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -1299,11 +1299,11 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID</code></p>
+<p><code class="prettyprint">PUT https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID</code></p>
 
 <p>To update all permissions for a specific device, use the endpoint:</p>
 
-<p><code class="prettyprint">PUT https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions</code></p>
+<p><code class="prettyprint">PUT https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -1340,7 +1340,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="getting-app-users">Getting app users</h2>
 
 <p>Allows you to view a list of users who have approved your app/developer and obtain user ID&rsquo;s which can be used in creating/updating an approval or updating permissions for a device.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/users"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Cache-Control: no-cache"</span>
@@ -1348,7 +1348,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -1384,7 +1384,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/users</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -1395,7 +1395,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="showing-user-info">Showing user info</h2>
 
 <p>Allows you to view user info such as username and email.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/users/USER_ID"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/users/USER_ID"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Cache-Control: no-cache"</span>
@@ -1403,7 +1403,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/users/USER_ID'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -1431,7 +1431,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/users/USER_ID</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/users/USER_ID</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -1444,7 +1444,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="showing-developer-info">Showing developer info</h2>
 
 <p>Allows you to view developer info such as Company name and ID which can be used in creating/updating an approval or updating permissions for a device.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/developers/DEVELOPER_ID"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/developers/DEVELOPER_ID"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Cache-Control: no-cache"</span>
@@ -1452,7 +1452,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/developers/DEVELOPER_ID'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/developers/DEVELOPER_ID'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -1481,11 +1481,11 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/developers/DEVELOPER_ID</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/developers/DEVELOPER_ID</code></p>
 
 <p>List of all developers</p>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/developers</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/developers</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -1500,13 +1500,13 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="getting-a-list-of-configs">Getting a list of configs</h2>
 
 <p>Use this endpoint to see a list of device configs under your control.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/configs/"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/configs/"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/configs/'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/configs/'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
@@ -1536,7 +1536,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/configs</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/configs</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -1545,13 +1545,13 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="getting-a-specific-config">Getting a specific config</h2>
 
 <p>Use this endpoint to see a specific config</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/v1/configs/CONFIG_ID"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/configs/CONFIG_ID"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/configs/CONFIG_ID'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/configs/CONFIG_ID'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span> <span class="p">},</span>
   <span class="na">json</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
@@ -1579,7 +1579,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.coposition.com/v1/configs/CONFIG_ID</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/configs/CONFIG_ID</code></p>
 
 <h3 id="headers">Headers</h3>
 
@@ -1588,7 +1588,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <h2 id="updating-a-specific-config">Updating a specific config</h2>
 
 <p>Use this endpoint to update a specific config. Any and as many key/value combinations you want can go within custom, type/mode/frequency are just examples.</p>
-<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/v1/configs/CONFIG_ID"</span>
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.coposition.com/configs/CONFIG_ID"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -1604,7 +1604,7 @@ Config will only be returned if checkin is created with the api key of the devel
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/v1/configs/CONFIG_ID'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/configs/CONFIG_ID'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
     <span class="p">{</span> <span class="s1">'x-api-key'</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY_HERE'</span>
       <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
@@ -1638,7 +1638,7 @@ Config will only be returned if checkin is created with the api key of the devel
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://api.coposition.com/v1/configs/CONFIG_ID</code></p>
+<p><code class="prettyprint">PUT https://api.coposition.com/configs/CONFIG_ID</code></p>
 
 <h3 id="headers">Headers</h3>
 
