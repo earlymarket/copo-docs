@@ -5,14 +5,14 @@ Configs allow developers to set and control any additional device settings they 
 Use this endpoint to see a list of device configs under your control.
 
 ```shell
-curl -X GET "https://api.coposition.com/v1/configs/"
+curl -X GET "https://api.coposition.com/configs/"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
 ```
 ```javascript
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com/v1/configs/',
+  url: 'https://api.coposition.com/configs/',
   headers:
    { 'x-api-key': 'YOUR_API_KEY_HERE' },
   json: true };
@@ -41,7 +41,7 @@ request(options, function (error, response, body) {
 
 ### HTTP Request
 
-`GET https://api.coposition.com/v1/configs`
+`GET https://api.coposition.com/configs`
 
 ### Headers
 
@@ -51,14 +51,14 @@ request(options, function (error, response, body) {
 Use this endpoint to see a specific config
 
 ```shell
-curl -X GET "https://api.coposition.com/v1/configs/CONFIG_ID"
+curl -X GET "https://api.coposition.com/configs/CONFIG_ID"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
 ```
 ```javascript
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com/v1/configs/CONFIG_ID',
+  url: 'https://api.coposition.com/configs/CONFIG_ID',
   headers:
    { 'x-api-key': 'YOUR_API_KEY_HERE' },
   json: true };
@@ -85,7 +85,7 @@ request(options, function (error, response, body) {
 
 ### HTTP Request
 
-`GET https://api.coposition.com/v1/configs/CONFIG_ID`
+`GET https://api.coposition.com/configs/CONFIG_ID`
 
 ### Headers
 
@@ -95,7 +95,7 @@ request(options, function (error, response, body) {
 Use this endpoint to update a specific config. Any and as many key/value combinations you want can go within custom, type/mode/frequency are just examples.
 
 ```shell
-curl -X PUT "https://api.coposition.com/v1/configs/CONFIG_ID"
+curl -X PUT "https://api.coposition.com/configs/CONFIG_ID"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "Content-Type: application/json"
   -d '{
@@ -112,7 +112,7 @@ curl -X PUT "https://api.coposition.com/v1/configs/CONFIG_ID"
 var request = require("request");
 
 var options = { method: 'PUT',
-  url: 'https://api.coposition.com/v1/configs/CONFIG_ID',
+  url: 'https://api.coposition.com/configs/CONFIG_ID',
   headers:
     { 'x-api-key': 'YOUR_API_KEY_HERE'
       'content-type': 'application/json' },
@@ -145,7 +145,7 @@ request(options, function (error, response, body) {
 
 ### HTTP Request
 
-`PUT https://api.coposition.com/v1/configs/CONFIG_ID`
+`PUT https://api.coposition.com/configs/CONFIG_ID`
 
 ### Headers
 
