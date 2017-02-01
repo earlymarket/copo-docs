@@ -46,10 +46,11 @@ request(options, function (error, response, body) {
     "uuid": "95515f5a-c89c-476d-9360-f58a12fb3878",
     "user_id": 1,
     "name": "mobile",
-    "fogged": false,
+    "fogged": true,
     "delayed": null,
     "alias": null,
-    "published": false
+    "published": false,
+    "cloaked": false
   },
   "config": {
     "id": 1,
@@ -145,7 +146,8 @@ For a specific device (will return full device info if developer configures devi
     "fogged": false,
     "delayed": null,
     "alias": null,
-    "published": false
+    "published": false,
+    "cloaked": false
   },
   "config": {
     "id": 1,
@@ -177,7 +179,8 @@ curl -X PUT "https://api.coposition.com/users/USER_ID/devices/DEVICE_ID"
   -d '{
     "fogged" : false,
     "delayed" : 10,
-    "published" : true
+    "published" : true,
+    "cloaked" : true
     }'
 ```
 ```javascript
@@ -191,7 +194,7 @@ var options = { method: 'PUT',
      'X-Api-Key': 'YOUR_API_KEY_HERE'
      'X-User-Token': 'USER_AUTH_TOKEN',
      'X-User-Email': 'USER_EMAIL' },
-  body: { fogged: false,  delayed: 10, published: true},
+  body: { fogged: false,  delayed: 10, published: true, cloaked: true},
   json: true };
 
 request(options, function (error, response, body) {
@@ -213,7 +216,8 @@ request(options, function (error, response, body) {
     "fogged": false,
     "delayed": 10,
     "alias": null,
-    "published": true
+    "published": true,
+    "cloaked": true
   },
   "config": {
     "id": 1,

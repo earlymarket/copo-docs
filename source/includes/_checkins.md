@@ -10,7 +10,7 @@ You may also delay sharing a check-in to a less sensitive time by changing the d
 A latitude and longitude are required. You can also provide a created at date and time in the format "yyyy-mm-dd [hh:mm:ss]". If the API key belongs to the developer who originally created the device, the device config will also be returned.
 
 ```shell
-curl -X PUT "https://api.coposition.com/checkins"
+curl -X POST "https://api.coposition.com/checkins"
      -H "X-Api-Key: YOUR_API_KEY_HERE"
      -H "Content-Type: application/json"
      -H "X-UUID: DEVICE-UUID-HERE"
@@ -31,7 +31,7 @@ var options = { method: 'POST',
      'content-type': 'application/json',
      'X-UUID': 'DEVICE-UUID-HERE'
      'x-api-key': 'YOUR_API_KEY_HERE' },
-  body: { lat: '51.588330', lng: '-0.513069', created_at : '2016-10-31 [10:30:12]' },
+  body: { lat: '51.588330', lng: '-0.513069', created_at : '2017-02-01 [11:01:38]' },
   json: true };
 
 request(options, function (error, response, body) {
@@ -48,27 +48,35 @@ request(options, function (error, response, body) {
 {
   "data": [
     {
-      "id": 18623,
       "lat": 51.58833,
       "lng": -0.513069,
-      "created_at": "2016-06-15T14:49:09.364Z",
-      "updated_at": "2016-06-15T14:49:09.364Z",
-      "uuid": "b22d4382-9961-4262-a6b5-c6f841f2501e",
-      "device_id": 7,
+      "device_id": 309,
+      "fogged": false,
+      "id": 287282,
+      "uuid": "cb732efc-b34f-427a-b80c-c39d4ff4a8f7",
+      "fogged_lat": 51.60333,
+      "fogged_lng": -0.48546,
+      "fogged_city": "Harefield",
+      "country_code": "GB",
+      "fogged_country_code": "GB",
+      "created_at": "2017-02-01T11:01:38.000Z",
+      "updated_at": "2017-02-01T11:04:02.661Z",
       "address": "Not yet geocoded",
       "city": null,
       "postal_code": null,
-      "country_code": "GB",
-      "fogged": false,
-      "fogged_lat": 51.60333,
-      "fogged_lng": -0.48546,
-      "fogged_area": "Harefield"
+      "output_lat": 51.58833,
+      "output_lng": -0.513069,
+      "output_address": "Not yet geocoded",
+      "output_city": null,
+      "output_postal_code": null,
+      "output_country_code": "GB",
+      "edited": false
     }
   ],
   "config": {
     "id": 23,
     "developer_id": 2,
-    "device_id": 7,
+    "device_id": 309,
     "custom": null,
     "created_at": "2016-06-08T07:59:17.005Z",
     "updated_at": "2016-06-13T09:27:52.338Z"
@@ -89,6 +97,61 @@ Attribute               | Value
 lat                     | -180/+180
 lng                     | -180/+180
 created_at *(optional)* | A valid [Ruby datetime](http://ruby-doc.org/stdlib-2.3.0/libdoc/date/rdoc/DateTime.html#method-c-parse) value e.g. "yyyy-mm-dd [hh:mm:ss]"
+
+## Create a batch of new check-ins
+Again, the latitude and longitude of each check-in is required and you can also supply a created at date and time.
+
+```shell
+curl -X POST "https://api.coposition.com/checkins/batch_create"
+     -H "X-Api-Key: YOUR_API_KEY_HERE"
+     -H "Content-Type: application/json"
+     -H "X-UUID: DEVICE-UUID-HERE"
+     -H "Cache-Control: no-cache"
+     -d '[
+       {
+         "lat" : "51.588330",
+         "lng" : "-0.513069",
+         "created_at" : "2016-10-31 [10:30:12]"
+       },
+       {
+         "lat" : "52.345334",
+         "lng" : "-0.563423",
+         "created_at" : "2016-10-31 [11:05:54]"
+       }]''
+```
+```javascript
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://api.coposition.com/checkins',
+  headers:
+   { 'cache-control': 'no-cache',
+     'content-type': 'application/json',
+     'X-UUID': 'DEVICE-UUID-HERE'
+     'x-api-key': 'YOUR_API_KEY_HERE' },
+  body: [
+    { lat: '51.588330', lng: '-0.513069', created_at : '2017-02-01 [11:01:38]' },
+    { lat: '52.345334', lng: '-0.563423', created_at: '2016-10-31 [11:05:54]' }
+  ],
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+
+```
+> The above command returns JSON structured like this.
+> Config will only be returned if checkin is created with the api key of the developer who created the device.
+
+```json
+{
+  "message": "Checkins created"
+}
+```
+### HTTP Request
+`POST https://api.coposition.com/checkins/batch_create`
 
 
 ##  Get a list of user checkins
