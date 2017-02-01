@@ -4,7 +4,7 @@
 Lists all of a device permission settings, returns id of permission which can be used for updating a permission.
 
 ```shell
-curl -X GET "https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions"
+curl -X GET "https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "X-User-Token: USER_AUTH_TOKEN"
   -H "X-User-Email: USER_EMAIL"
@@ -15,7 +15,7 @@ curl -X GET "https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permi
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions',
+  url: 'https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -56,7 +56,7 @@ request(options, function (error, response, body) {
 ]
 ```
 ### HTTP Request
-`GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions`
+`GET https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions`
 
 ### Headers
 
@@ -71,7 +71,7 @@ request(options, function (error, response, body) {
 Update device permissions for a Developer/App or User. Permission settings include privilege level, bypass fogging and bypass delay. Privilege level controls the access a consumer has, disallowed, last_only (can only view last checkin) or complete.
 
 ```shell
-curl -X PUT "https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID"
+curl -X PUT "https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "X-User-Token: USER_AUTH_TOKEN"
   -H "X-User-Email: USER_EMAIL"
@@ -87,7 +87,7 @@ curl -X PUT "https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permi
 var request = require("request");
 
 var options = { method: 'PUT',
-  url: 'https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID',
+  url: 'https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -118,11 +118,11 @@ request(options, function (error, response, body) {
 }
 ```
 ### HTTP Request
-`PUT https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID`
+`PUT https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions/PERMISSION_ID`
 
 To update all permissions for a specific device, use the endpoint:
 
-`PUT https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID/permissions`
+`PUT https://api.coposition.com/users/USER_ID/devices/DEVICE_ID/permissions`
 
 ### Headers
 

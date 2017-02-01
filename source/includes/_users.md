@@ -5,7 +5,7 @@
 Allows you to view a list of users who have approved your app/developer and obtain user ID's which can be used in creating/updating an approval or updating permissions for a device.
 
 ```shell
-curl -X GET "https://api.coposition.com/v1/users"
+curl -X GET "https://api.coposition.com/users"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "Content-Type: application/json"
   -H "Cache-Control: no-cache"
@@ -14,7 +14,7 @@ curl -X GET "https://api.coposition.com/v1/users"
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com/v1/users',
+  url: 'https://api.coposition.com/users',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -47,7 +47,7 @@ request(options, function (error, response, body) {
 ]
 ```
 ### HTTP Request
-`GET https://api.coposition.com/v1/users`
+`GET https://api.coposition.com/users`
 
 ### Headers
 
@@ -60,7 +60,7 @@ request(options, function (error, response, body) {
 Allows you to view user info such as username and email.
 
 ```shell
-curl -X GET "https://api.coposition.com/v1/users/USER_ID"
+curl -X GET "https://api.coposition.com/users/USER_ID"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "Content-Type: application/json"
   -H "Cache-Control: no-cache"
@@ -69,7 +69,7 @@ curl -X GET "https://api.coposition.com/v1/users/USER_ID"
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com/v1/users/USER_ID',
+  url: 'https://api.coposition.com/users/USER_ID',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -94,7 +94,7 @@ request(options, function (error, response, body) {
 }
 ```
 ### HTTP Request
-`GET https://api.coposition.com/v1/users/USER_ID`
+`GET https://api.coposition.com/users/USER_ID`
 
 ### Headers
 

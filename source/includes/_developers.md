@@ -4,7 +4,7 @@
 Allows you to view developer info such as Company name and ID which can be used in creating/updating an approval or updating permissions for a device.
 
 ```shell
-curl -X GET "https://api.coposition.com/v1/developers/DEVELOPER_ID"
+curl -X GET "https://api.coposition.com/developers/DEVELOPER_ID"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "Content-Type: application/json"
   -H "Cache-Control: no-cache"
@@ -13,7 +13,7 @@ curl -X GET "https://api.coposition.com/v1/developers/DEVELOPER_ID"
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com/v1/developers/DEVELOPER_ID',
+  url: 'https://api.coposition.com/developers/DEVELOPER_ID',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -39,11 +39,11 @@ request(options, function (error, response, body) {
 }
 ```
 ### HTTP Request
-`GET https://api.coposition.com/v1/developers/DEVELOPER_ID`
+`GET https://api.coposition.com/developers/DEVELOPER_ID`
 
 List of all developers
 
-`GET https://api.coposition.com/v1/developers`
+`GET https://api.coposition.com/developers`
 
 ### Headers
 

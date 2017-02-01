@@ -4,7 +4,7 @@
 Creates a new device for the current user.
 
 ```shell
-curl -X POST "https://api.coposition.com/v1/users/USER_ID/devices"
+curl -X POST "https://api.coposition.com/users/USER_ID/devices"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "Content-Type: application/json"
   -H "X-User-Token: USER_AUTH_TOKEN"
@@ -20,7 +20,7 @@ curl -X POST "https://api.coposition.com/v1/users/USER_ID/devices"
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://api.coposition.com/v1/users/USER_ID/devices',
+  url: 'https://api.coposition.com/users/USER_ID/devices',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -62,7 +62,7 @@ request(options, function (error, response, body) {
 }
 ```
 ### HTTP Request
-`POST https://api.coposition.com/v1/users/USER_ID/devices`
+`POST https://api.coposition.com/users/USER_ID/devices`
 
 ### Headers
 
@@ -83,7 +83,7 @@ name | "device name"
 Returns a list of devices belonging to the specified user. The user must have approved your App.
 
 ```shell
-curl -X GET "https://api.coposition.com/v1/users/USER_ID/devices"
+curl -X GET "https://api.coposition.com/users/USER_ID/devices"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "Content-Type: application/json"
   -H "Cache-Control: no-cache"
@@ -92,7 +92,7 @@ curl -X GET "https://api.coposition.com/v1/users/USER_ID/devices"
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com/v1/users/USER_ID/devices',
+  url: 'https://api.coposition.com/users/USER_ID/devices',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -127,11 +127,11 @@ request(options, function (error, response, body) {
 ]
 ```
 ### HTTP Request
-`GET https://api.coposition.com/v1/users/USER_ID/devices`
+`GET https://api.coposition.com/users/USER_ID/devices`
 
 For a specific device (will return full device info if developer configures device)
 
-`GET https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID`
+`GET https://api.coposition.com/users/USER_ID/devices/DEVICE_ID`
 
 > For a specific device:
 
@@ -168,7 +168,7 @@ For a specific device (will return full device info if developer configures devi
 You can fog, delay or share a device. Checkins created while a device is fogged will have their address shown as the nearest city rather than the exact location. Delay works by not making checkins available to your data consumers until x minutes after they have been created. Publishing a device allows anyone with a coposition account access to your latest fogged or unfogged location for this device.
 
 ```shell
-curl -X PUT "https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID"
+curl -X PUT "https://api.coposition.com/users/USER_ID/devices/DEVICE_ID"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "X-User-Token: USER_AUTH_TOKEN"
   -H "X-User-Email: USER_EMAIL"
@@ -184,7 +184,7 @@ curl -X PUT "https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID"
 var request = require("request");
 
 var options = { method: 'PUT',
-  url: 'https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID',
+  url: 'https://api.coposition.com/users/USER_ID/devices/DEVICE_ID',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -226,7 +226,7 @@ request(options, function (error, response, body) {
 }
 ```
 ### HTTP Request
-`PUT https://api.coposition.com/v1/users/USER_ID/devices/DEVICE_ID`
+`PUT https://api.coposition.com/users/USER_ID/devices/DEVICE_ID`
 
 ### Headers
 

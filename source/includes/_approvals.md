@@ -5,7 +5,7 @@
 Use this endpoint to create a pending approval between an App/User and the current User.
 
 ```shell
-curl -X POST "https://api.coposition.com/v1/users/USER_ID/approvals/"
+curl -X POST "https://api.coposition.com/users/USER_ID/approvals/"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "Content-Type: application/json"
   -H "Cache-Control: no-cache"
@@ -20,7 +20,7 @@ curl -X POST "https://api.coposition.com/v1/users/USER_ID/approvals/"
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://api.coposition.com/v1/users/USER_ID/approvals/',
+  url: 'https://api.coposition.com/users/USER_ID/approvals/',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -50,7 +50,7 @@ request(options, function (error, response, body) {
 }
 ```
 ### HTTP Request
-`POST https://api.coposition.com/v1/users/USER_ID/approvals/`
+`POST https://api.coposition.com/users/USER_ID/approvals/`
 
 ### Headers
 
@@ -70,7 +70,7 @@ approvable_type | 'User' or 'Developer'
 Gets a list of accepted/pending approvals belonging to a user. Returns the approval_id which is used in approved/rejecting an approval.
 
 ```shell
-curl -X GET "https://api.coposition.com/v1/users/USER_ID/approvals/"
+curl -X GET "https://api.coposition.com/users/USER_ID/approvals/"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "X-User-Token: USER_AUTH_TOKEN"
   -H "X-User-Email: USER_EMAIL"
@@ -79,7 +79,7 @@ curl -X GET "https://api.coposition.com/v1/users/USER_ID/approvals/"
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com/v1/users/USER_ID/approvals/',
+  url: 'https://api.coposition.com/users/USER_ID/approvals/',
   headers:
    { 'X-Api-Key': 'YOUR_API_KEY_HERE'
      'X-User-Token': 'USER_AUTH_TOKEN',
@@ -120,7 +120,7 @@ request(options, function (error, response, body) {
 ]
 ```
 ### HTTP Request
-`GET https://api.coposition.com/v1/users/USER_ID/approvals/`
+`GET https://api.coposition.com/users/USER_ID/approvals/`
 
 ### Headers
 
@@ -135,7 +135,7 @@ request(options, function (error, response, body) {
 User needs to approve an approval in order to let a friend/app see their location data. A user can also choose to reject an approval or revoke an existing approval.
 
 ```shell
-curl -X PUT "https://api.coposition.com/v1/users/USER_ID/approvals/APPROVAL_ID"
+curl -X PUT "https://api.coposition.com/users/USER_ID/approvals/APPROVAL_ID"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "Content-Type: application/json"
   -H "X-User-Token: USER_AUTH_TOKEN"
@@ -151,7 +151,7 @@ curl -X PUT "https://api.coposition.com/v1/users/USER_ID/approvals/APPROVAL_ID"
 var request = require("request");
 
 var options = { method: 'PUT',
-  url: 'https://api.coposition.com/v1/users/USER_ID/approvals/APPROVAL_ID',
+  url: 'https://api.coposition.com/users/USER_ID/approvals/APPROVAL_ID',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -183,7 +183,7 @@ request(options, function (error, response, body) {
 }
 ```
 ### HTTP Request
-`PUT https://api.coposition.com/v1/users/USER_ID/approvals/APPROVAL_ID`
+`PUT https://api.coposition.com/users/USER_ID/approvals/APPROVAL_ID`
 
 ### Headers
 

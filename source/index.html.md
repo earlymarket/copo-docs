@@ -97,14 +97,14 @@ UUID's can be pre-generated to allow you to uniquely identify a device after man
 > At the moment: 1 request = 1 UUID.
 
 ```shell
-curl -X GET "https://api.coposition.com/v1/uuid"
+curl -X GET "https://api.coposition.com/uuid"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
 ```
 ```javascript
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com/v1/uuid',
+  url: 'https://api.coposition.com/uuid',
   headers:
    { 'cache-control': 'no-cache',
      'x-api-key': 'YOUR_API_KEY_HERE' } };
@@ -125,7 +125,7 @@ request(options, function (error, response, body) {
 ```
 
 ### HTTP Request
-`GET https://api.coposition.com/v1/uuid`
+`GET https://api.coposition.com/uuid`
 
 <aside class="success">
 Remember your API key!
