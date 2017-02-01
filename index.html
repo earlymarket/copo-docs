@@ -384,12 +384,12 @@ Config will only be returned if checkin is created with the api key of the devel
          "lat" : "52.345334",
          "lng" : "-0.563423",
          "created_at" : "2016-10-31 [11:05:54]"
-       }]''
-</span></code></pre>
+       }]'</span>
+</code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/checkins'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/checkins/batch_create'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -410,8 +410,7 @@ Config will only be returned if checkin is created with the api key of the devel
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this.
-Config will only be returned if checkin is created with the api key of the developer who created the device.</p>
+<p>The above command returns JSON structured like this.</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checkins created"</span><span class="w">
@@ -421,6 +420,34 @@ Config will only be returned if checkin is created with the api key of the devel
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://api.coposition.com/checkins/batch_create</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<p><code class="prettyprint">X-Api-key</code>
+<code class="prettyprint">X-UUID</code>
+<code class="prettyprint">Content-Type</code></p>
+
+<h3 id="body">Body</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lat</td>
+<td>-180/+180</td>
+</tr>
+<tr>
+<td>lng</td>
+<td>-180/+180</td>
+</tr>
+<tr>
+<td>created_at <em>(optional)</em></td>
+<td>A valid <a href="http://ruby-doc.org/stdlib-2.3.0/libdoc/date/rdoc/DateTime.html#method-c-parse">Ruby datetime</a> value e.g. &ldquo;yyyy-mm-dd [hh:mm:ss]&rdquo;</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-a-list-of-user-checkins">Get a list of user checkins</h2>
 
@@ -1014,6 +1041,10 @@ Config will only be returned if checkin is created with the api key of the devel
 </tr>
 <tr>
 <td>published</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>cloaked</td>
 <td>boolean</td>
 </tr>
 </tbody></table>
