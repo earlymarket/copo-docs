@@ -246,3 +246,4 @@ Attribute | Value
 fogged | boolean
 delayed | integer (number of minutes)
 published | boolean
+cloaked | boolean

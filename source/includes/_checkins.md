@@ -117,13 +117,13 @@ curl -X POST "https://api.coposition.com/checkins/batch_create"
          "lat" : "52.345334",
          "lng" : "-0.563423",
          "created_at" : "2016-10-31 [11:05:54]"
-       }]''
+       }]'
 ```
 ```javascript
 var request = require("request");
 
 var options = { method: 'POST',
-  url: 'https://api.coposition.com/checkins',
+  url: 'https://api.coposition.com/checkins/batch_create',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -143,7 +143,6 @@ request(options, function (error, response, body) {
 
 ```
 > The above command returns JSON structured like this.
-> Config will only be returned if checkin is created with the api key of the developer who created the device.
 
 ```json
 {
@@ -152,6 +151,18 @@ request(options, function (error, response, body) {
 ```
 ### HTTP Request
 `POST https://api.coposition.com/checkins/batch_create`
+
+### Headers
+`X-Api-key`
+`X-UUID`
+`Content-Type`
+
+### Body
+Attribute               | Value
+----------------------- | --------------------------------------------------------
+lat                     | -180/+180
+lng                     | -180/+180
+created_at *(optional)* | A valid [Ruby datetime](http://ruby-doc.org/stdlib-2.3.0/libdoc/date/rdoc/DateTime.html#method-c-parse) value e.g. "yyyy-mm-dd [hh:mm:ss]"
 
 
 ##  Get a list of user checkins
