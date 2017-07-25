@@ -11,6 +11,7 @@ toc_footers:
   - <a href="https://coposition.com/developers/console">Log In to your Developer Console</a>
 
 includes:
+  - oauth
   - checkins
   - signups
   - logins
