@@ -90,24 +90,22 @@ Link user to
 'https://coposition.com/oauth/authorize?response_type=code&client_id=UID&redirect_uri=REDIRECT_URI'
 
 Once user has completed authorisation they will be redirected to 
-YOUR_REDIRECT_URI?code=ACCESS_GRANT
-
-You will need the access grant in the next step.
+'YOUR_REDIRECT_URI?code=ACCESS_GRANT'
 
 var request = require("request");
 
 var options = {
   method: 'POST',
   url: 'https://coposition.com/oauth/token',
-  headers:
-    { 'Content-Type': 'application/json' },
-  body: 
-    { client_id: '51.588330',
-      client_secret: '-0.513069',
-      code : '2017-02-01 [11:01:38]'
-      grant_type: 'authorization_code',
-      redirect_uri: 'YOUR_REDIRECT_URI?code=ACCESS_TOKEN'
-    },
+  headers: { 'Content-Type': 'application/json' },
+  body: { 
+    client_id: 'OAUTH_UID',
+    client_secret: 'OAUTH_SECRET',
+    code : 'ACCESS_GRANT'
+    grant_type: 'authorization_code',
+    redirect_uri: 'YOUR_REDIRECT_URI?code=ACCESS_GRANT'
+  }
+}
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -131,6 +129,7 @@ var request = require("request");
 var options = {
   method: 'GET',
   url: 'https://coposition.com/users/me?access_token=ACCESS_TOKEN'
+}
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
@@ -151,7 +150,7 @@ request(options, function (error, response, body) {
 
 In order to access a user's data, the user will need to have authorized your application to access their data via oAuth.
 
-You can add oAuth to your app using our <a href="https://github.com/earlymarket/omniauth-coposition-oauth2">ruby gem</a>.
+You can add oAuth to your app using our <a href="https://github.com/earlymarket/omniauth-coposition-oauth2">ruby gem</a>. Instructions for authorizing a user via javascript are included to the right.
 
 You will need to provide both your API key and an access token associated with the user who's data you are trying to access when using the API. The access token can be included by appending the following query parameter:
 
