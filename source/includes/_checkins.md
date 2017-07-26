@@ -169,7 +169,7 @@ created_at *(optional)* | A valid [Ruby datetime](http://ruby-doc.org/stdlib-2.3
 Get a list of a user's checkins, you can choose to geocode the checkins to get a full address if available, you can specific a device from which you want checkins from and how many checkins you want to receive.
 
 ```shell
-curl -X GET "https://api.coposition.com/users/USER_ID/checkins/"
+curl -X GET "https://api.coposition.com/users/USER_ID/checkins?access_token=ACCESS_TOKEN"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
 ```
 ```javascript
@@ -177,7 +177,7 @@ var request = require("request");
 
 var options = {
   method: 'GET',
-  url: 'https://api.coposition.com/users/USER_ID/checkins/',
+  url: 'https://api.coposition.com/users/USER_ID/checkins?access_token=ACCESS_TOKEN',
   headers:
    { 'x-api-key': 'YOUR_API_KEY_HERE' },
   json: true };
@@ -224,11 +224,11 @@ request(options, function (error, response, body) {
 
 For checkins for a user.
 
-`GET https://api.coposition.com/users/USER_ID/checkins`
+`GET https://api.coposition.com/users/USER_ID/checkins?access_token=ACCESS_TOKEN`
 
 Just the last checkin
 
-`GET https://api.coposition.com/users/USER_ID/checkins/last`
+`GET https://api.coposition.com/users/USER_ID/checkins/last?access_token=ACCESS_TOKEN`
 
 #### Optional filters
 

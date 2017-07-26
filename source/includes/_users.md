@@ -60,7 +60,7 @@ request(options, function (error, response, body) {
 Allows you to view user info such as username and email.
 
 ```shell
-curl -X GET "https://api.coposition.com/users/USER_ID"
+curl -X GET "https://api.coposition.com/users/USER_ID?access_token=ACCESS_TOKEN"
   -H "X-Api-Key: YOUR_API_KEY_HERE"
   -H "Content-Type: application/json"
   -H "Cache-Control: no-cache"
@@ -69,7 +69,7 @@ curl -X GET "https://api.coposition.com/users/USER_ID"
 var request = require("request");
 
 var options = { method: 'GET',
-  url: 'https://api.coposition.com/users/USER_ID',
+  url: 'https://api.coposition.com/users/USER_ID?access_token=ACCESS_TOKEN',
   headers:
    { 'cache-control': 'no-cache',
      'content-type': 'application/json',
@@ -94,7 +94,7 @@ request(options, function (error, response, body) {
 }
 ```
 ### HTTP Request
-`GET https://api.coposition.com/users/USER_ID`
+`GET https://api.coposition.com/users/USER_ID?access_token=ACCESS_TOKEN`
 
 ### Headers
 

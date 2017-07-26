@@ -11,16 +11,12 @@ toc_footers:
   - <a href="https://coposition.com/developers/console">Log In to your Developer Console</a>
 
 includes:
-  - oauth
-  - checkins
-  - signups
-  - logins
-  - devices
-  - approvals
-  - permissions
   - users
-  - developers
+  - approvals
+  - checkins
+  - devices
   - configs
+  - developers
   - errors
 
 search: true
@@ -83,11 +79,83 @@ Other custom headers used by the API are shown below. We'll revisit them when th
 
 Header           | Value
 ---------------- | ------------------------------------------------------------------------
-X-Secret-App-Key | Exclusively used by the Coposition app
-X-User-Token     | Authentication token returned on sign in/sign up, destroyed on sign out.
 X-UUID           | Unique identifier associated with a specific device in our database.
-X-User-Email     | User's email address
-X-User-Password  | User's password
+
+# Oauth
+
+> You will need your Oauth secret key, UID and redirect uri from your developer console
+
+```javascript
+Link user to 
+'https://coposition.com/oauth/authorize?response_type=code&client_id=UID&redirect_uri=REDIRECT_URI'
+
+Once user has completed authorisation they will be redirected to 
+YOUR_REDIRECT_URI?code=ACCESS_GRANT
+
+You will need the access grant in the next step.
+
+var request = require("request");
+
+var options = {
+  method: 'POST',
+  url: 'https://coposition.com/oauth/token',
+  headers:
+    { 'Content-Type': 'application/json' },
+  body: 
+    { client_id: '51.588330',
+      client_secret: '-0.513069',
+      code : '2017-02-01 [11:01:38]'
+      grant_type: 'authorization_code',
+      redirect_uri: 'YOUR_REDIRECT_URI?code=ACCESS_TOKEN'
+    },
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+> The above command returns JSON structured like this.
+
+```json
+{
+  "access_token": "ACCESS_TOKEN"
+}
+```
+
+> Getting user info using access token
+
+```javascript
+var request = require("request");
+
+var options = {
+  method: 'GET',
+  url: 'https://coposition.com/users/me?access_token=ACCESS_TOKEN'
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+```
+> The above command returns JSON structured like this.
+
+```json
+{
+  "id": 1,
+  "email": "tom@email.com",
+  "username": "tom",
+  "slug": "tom"
+}
+```
+
+In order to access a user's data, the user will need to have authorized your application to access their data via oAuth.
+
+You can add oAuth to your app using our <a href="https://github.com/earlymarket/omniauth-coposition-oauth2">ruby gem</a>.
+
+You will need to provide both your API key and an access token associated with the user who's data you are trying to access when using the API. The access token can be included by appending the following query parameter:
+
+<code>?access_token=ACCESS_TOKEN</code>
 
 # UUID
 All hardware is identified by a **universally unique identifier** (UUID). This is because not all devices share the same identifying marks e.g. serial numbers, IMEI so we create an
