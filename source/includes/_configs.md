@@ -150,7 +150,7 @@ request(options, function (error, response, body) {
 ### Headers
 
 `X-Api-Key`
-'Content-Type'
+`Content-Type`
 
 ### Body
 Attribute | Value
