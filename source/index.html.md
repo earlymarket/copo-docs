@@ -85,6 +85,24 @@ X-UUID           | Unique identifier associated with a specific device in our da
 
 > You will need your Oauth secret key, UID and redirect uri from your developer console
 
+```shell
+Link user to 
+'https://coposition.com/oauth/authorize?response_type=code&client_id=UID&redirect_uri=REDIRECT_URI'
+
+Once user has completed authorisation they will be redirected to 
+'YOUR_REDIRECT_URI?code=ACCESS_GRANT'
+
+curl -X POST "https://coposition.com/oauth/token"
+     -H "Content-Type: application/json"
+     -d '{
+      "client_id" : OAUTH_UID,
+      "client_secret" : OAUTH_SECRET,
+      "code" : ACCESS_GRANT
+      "grant_type" : "authorization_code",
+      "redirect_uri" : "YOUR_REDIRECT_URI?code=ACCESS_GRANT"
+     }'
+```
+
 ```javascript
 Link user to 
 'https://coposition.com/oauth/authorize?response_type=code&client_id=UID&redirect_uri=REDIRECT_URI'
@@ -99,9 +117,9 @@ var options = {
   url: 'https://coposition.com/oauth/token',
   headers: { 'Content-Type': 'application/json' },
   body: { 
-    client_id: 'OAUTH_UID',
-    client_secret: 'OAUTH_SECRET',
-    code : 'ACCESS_GRANT'
+    client_id: OAUTH_UID,
+    client_secret: OAUTH_SECRET,
+    code : ACCESS_GRANT
     grant_type: 'authorization_code',
     redirect_uri: 'YOUR_REDIRECT_URI?code=ACCESS_GRANT'
   }
@@ -117,40 +135,19 @@ request(options, function (error, response, body) {
 
 ```json
 {
-  "access_token": "ACCESS_TOKEN"
-}
-```
-
-> Getting user info using access token
-
-```javascript
-var request = require("request");
-
-var options = {
-  method: 'GET',
-  url: 'https://coposition.com/users/me?access_token=ACCESS_TOKEN'
-}
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
-```
-> The above command returns JSON structured like this.
-
-```json
-{
-  "id": 1,
-  "email": "tom@email.com",
-  "username": "tom",
-  "slug": "tom"
+  "access_token": ACCESS_TOKEN,
+  "user": {
+    "id": 1,
+    "email": "tom@email.com",
+    "username": "tom",
+    "slug": "tom"
+  }
 }
 ```
 
 In order to access a user's data, the user will need to have authorized your application to access their data via oAuth.
 
-You can add oAuth to your app using our <a href="https://github.com/earlymarket/omniauth-coposition-oauth2">ruby gem</a>. Instructions for authorizing a user via javascript are included to the right.
+You can add oAuth to your app using our <a href="https://github.com/earlymarket/omniauth-coposition-oauth2">ruby gem</a>. Instructions for authorizing a user via javascript or curl are included to the right.
 
 You will need to provide both your API key and an access token associated with the user who's data you are trying to access when using the API. The access token can be included by appending the following query parameter:
 
