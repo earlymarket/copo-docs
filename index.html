@@ -200,6 +200,22 @@ You must replace <code>YOUR_API_KEY_HERE</code> with your personal API key.
 <blockquote>
 <p>You will need your Oauth secret key, UID and redirect uri from your developer console</p>
 </blockquote>
+<pre class="highlight shell"><code>Link user to 
+<span class="s1">'https://coposition.com/oauth/authorize?response_type=code&amp;client_id=UID&amp;redirect_uri=REDIRECT_URI'</span>
+
+Once user has completed authorisation they will be redirected to 
+<span class="s1">'YOUR_REDIRECT_URI?code=ACCESS_GRANT'</span>
+
+curl -X POST <span class="s2">"https://coposition.com/oauth/token"</span>
+     -H <span class="s2">"Content-Type: application/json"</span>
+     -d <span class="s1">'{
+      "client_id" : OAUTH_UID,
+      "client_secret" : OAUTH_SECRET,
+      "code" : ACCESS_GRANT
+      "grant_type" : "authorization_code",
+      "redirect_uri" : "YOUR_REDIRECT_URI?code=ACCESS_GRANT"
+     }'</span>
+</code></pre>
 <pre class="highlight javascript"><code><span class="nx">Link</span> <span class="nx">user</span> <span class="nx">to</span> 
 <span class="s1">'https://coposition.com/oauth/authorize?response_type=code&amp;client_id=UID&amp;redirect_uri=REDIRECT_URI'</span>
 
@@ -213,9 +229,9 @@ You must replace <code>YOUR_API_KEY_HERE</code> with your personal API key.
   <span class="na">url</span><span class="p">:</span> <span class="s1">'https://coposition.com/oauth/token'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span> <span class="p">},</span>
   <span class="na">body</span><span class="p">:</span> <span class="p">{</span> 
-    <span class="na">client_id</span><span class="p">:</span> <span class="s1">'OAUTH_UID'</span><span class="p">,</span>
-    <span class="na">client_secret</span><span class="p">:</span> <span class="s1">'OAUTH_SECRET'</span><span class="p">,</span>
-    <span class="na">code</span> <span class="p">:</span> <span class="s1">'ACCESS_GRANT'</span>
+    <span class="na">client_id</span><span class="p">:</span> <span class="nx">OAUTH_UID</span><span class="p">,</span>
+    <span class="na">client_secret</span><span class="p">:</span> <span class="nx">OAUTH_SECRET</span><span class="p">,</span>
+    <span class="na">code</span> <span class="p">:</span> <span class="nx">ACCESS_GRANT</span>
     <span class="na">grant_type</span><span class="p">:</span> <span class="s1">'authorization_code'</span><span class="p">,</span>
     <span class="na">redirect_uri</span><span class="p">:</span> <span class="s1">'YOUR_REDIRECT_URI?code=ACCESS_GRANT'</span>
   <span class="p">}</span>
@@ -232,41 +248,19 @@ You must replace <code>YOUR_API_KEY_HERE</code> with your personal API key.
 <p>The above command returns JSON structured like this.</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCESS_TOKEN"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>Getting user info using access token</p>
-</blockquote>
-<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
-
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://coposition.com/users/me?access_token=ACCESS_TOKEN'</span>
-<span class="p">}</span>
-
-<span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this.</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tom@email.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tom"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tom"</span><span class="w">
+  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="err">ACCESS_TOKEN</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tom@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tom"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tom"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>In order to access a user&rsquo;s data, the user will need to have authorized your application to access their data via oAuth.</p>
 
-<p>You can add oAuth to your app using our <a href="https://github.com/earlymarket/omniauth-coposition-oauth2">ruby gem</a>. Instructions for authorizing a user via javascript are included to the right.</p>
+<p>You can add oAuth to your app using our <a href="https://github.com/earlymarket/omniauth-coposition-oauth2">ruby gem</a>. Instructions for authorizing a user via javascript or curl are included to the right.</p>
 
 <p>You will need to provide both your API key and an access token associated with the user who&rsquo;s data you are trying to access when using the API. The access token can be included by appending the following query parameter:</p>
 
@@ -378,7 +372,7 @@ Remember your API key!
 <h2 id="showing-user-info">Showing user info</h2>
 
 <p>Allows you to view user info such as username and email.</p>
-<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/users/USER_ID?access_token=ACCESS_TOKEN"</span>
+<pre class="highlight shell"><code>curl -X GET <span class="s2">"https://api.coposition.com/users/USER_ID"</span>
   -H <span class="s2">"X-Api-Key: YOUR_API_KEY_HERE"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Cache-Control: no-cache"</span>
@@ -386,7 +380,7 @@ Remember your API key!
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID?access_token=ACCESS_TOKEN'</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://api.coposition.com/users/USER_ID'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span>
    <span class="p">{</span> <span class="s1">'cache-control'</span><span class="p">:</span> <span class="s1">'no-cache'</span><span class="p">,</span>
      <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">,</span>
@@ -414,7 +408,7 @@ Remember your API key!
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.coposition.com/users/USER_ID?access_token=ACCESS_TOKEN</code></p>
+<p><code class="prettyprint">GET https://api.coposition.com/users/USER_ID</code></p>
 
 <h3 id="headers">Headers</h3>
 
