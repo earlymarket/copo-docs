@@ -17,6 +17,7 @@ includes:
   - devices
   - configs
   - developers
+  - requests
   - errors
 
 search: true
