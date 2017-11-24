@@ -1,5 +1,9 @@
 # Requests
 
+We log all the API requests you make, each request contains information regarding the controller and action the request was made to and user the data belongs to. 
+
+For example, if you requested to see a list of a user's checkins, this would be recorded as a request to the index action of the checkins controller and would contain the user_id for the user who's checkins you requested.
+
 ## Getting API request information
 
 Allows you to view previous API requests that you have made regarding a specific user.
